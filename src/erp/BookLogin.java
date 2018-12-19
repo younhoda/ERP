@@ -37,10 +37,6 @@ public class BookLogin extends JFrame implements ActionListener {
 
 		btnNewButton.addActionListener(this);
 
-		JButton btnNewButton_1 = new JButton("취소");
-		btnNewButton_1.setBounds(186, 525, 97, 23);
-		getContentPane().add(btnNewButton_1);
-
 		JButton btnNewButton_2 = new JButton("회원가입");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -48,7 +44,7 @@ public class BookLogin extends JFrame implements ActionListener {
 			}
 		});
 
-		btnNewButton_2.setBounds(317, 525, 124, 23);
+		btnNewButton_2.setBounds(206, 525, 124, 23);
 		getContentPane().add(btnNewButton_2);
 
 		JLabel lblNewLabel = new JLabel("아이디");
@@ -80,33 +76,30 @@ public class BookLogin extends JFrame implements ActionListener {
 
 	@Override
 
-	
 	public void actionPerformed(ActionEvent e) {
-		
-	BookMain main = new BookMain();
-	BookLogin login=new BookLogin();
-		
+
+		BookMain main = new BookMain();
+		BookLogin login = new BookLogin();
+
 		try {
-			Scanner sc=new Scanner(new File(textField.getText()+".txt"));
-			sID=sc.nextLine();
-			sPW=sc.nextLine();
+			Scanner sc = new Scanner(new File(textField.getText() + ".txt"));
+			sID = sc.nextLine();
+			sPW = sc.nextLine();
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
-		
-		if(e.getSource()==btnNewButton) {
-			if(textField.getText().equals(sID) && passwordField.getText().equals(sPW)) {
-				JOptionPane.showMessageDialog(null,"아이디와 비밀번호가 맞습니다.");
+
+		if (e.getSource() == btnNewButton) {
+			if (!textField.getText().equals(sID) && passwordField.getText().equals(sPW)) {
+				JOptionPane.showMessageDialog(null, "아이디와 비밀번호가 틀렸습니다.");				
 			}else {
-				JOptionPane.showMessageDialog(null,"아이디와 비밀번호가 틀렸습니다.");
+			JOptionPane.showMessageDialog(null, "로그인되었습니다.");
 			}
 			return;
-		}else if(e.getSource()==btnNewButton) {
-			
-		}
+		} else if (e.getSource() == btnNewButton) {
 
 		}
 
 	}
 
-
+}

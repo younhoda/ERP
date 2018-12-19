@@ -1,19 +1,18 @@
 package erp;
 
-public class BookDTO {
+public class MemberDTO {
 
-	private String id;
-	private String pw;
-	private String name;
-	private String Authoity;
-	private String tel;
-	private String Addr;
+	private String id; //아이디
+	private String pw; //패스워드
+	private String name;	//이름
+	private String tel;	//전화번호	
+	private String Addr;	//주소
 	
-	public BookDTO(String id, String pw, String name, String authoity, String tel, String addr) {
+	public MemberDTO(String id, String pw, String name, String tel, String addr) {
+		super();
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
-		Authoity = authoity;
 		this.tel = tel;
 		Addr = addr;
 	}
@@ -42,14 +41,6 @@ public class BookDTO {
 		this.name = name;
 	}
 
-	public String getAuthoity() {
-		return Authoity;
-	}
-
-	public void setAuthoity(String authoity) {
-		Authoity = authoity;
-	}
-
 	public String getTel() {
 		return tel;
 	}
@@ -68,9 +59,12 @@ public class BookDTO {
 
 	@Override
 	public String toString() {
-		return "LibraryDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", Authoity=" + Authoity + ", tel=" + tel
-				+ ", Addr=" + Addr + "]";
+		return "MemberDTO [id=" + id + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", Addr=" + Addr + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

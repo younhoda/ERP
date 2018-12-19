@@ -12,7 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class BookOrder extends JFrame implements ActionListener {
-	private JButton btnNewButton;
+	private JButton btnNewButton, btnNewButton_1;
+	private JTextField textField;
+	private JLabel lblNewLabel;
 	private JTextField textField_1;
 	private JTextField textField_2;
 
@@ -24,28 +26,37 @@ public class BookOrder extends JFrame implements ActionListener {
 
 		btnNewButton = new JButton("등록");
 
-		JLabel lblNewLabel = new JLabel("바코드번호");
-		lblNewLabel.setBounds(12, 196, 66, 15);
-		getContentPane().add(lblNewLabel);
-
-		JLabel lblNewLabel_2 = new JLabel("가격");
-		lblNewLabel_2.setBounds(12, 135, 57, 15);
-		getContentPane().add(lblNewLabel_2);
-
-		btnNewButton.setBounds(12, 275, 97, 23);
+		btnNewButton.setBounds(12, 227, 97, 34);
 		getContentPane().add(btnNewButton);
 
-		JButton btnNewButton_1 = new JButton("발주서 전체보기");
-		btnNewButton_1.setBounds(133, 275, 153, 23);
+		btnNewButton_1 = new JButton("발주수정");
+		btnNewButton_1.setBounds(125, 227, 121, 34);
 		getContentPane().add(btnNewButton_1);
 
+		lblNewLabel = new JLabel("출판사");
+		lblNewLabel.setBounds(12, 36, 57, 15);
+		getContentPane().add(lblNewLabel);
+
+		JLabel lblNewLabel_1 = new JLabel("ISBN");
+		lblNewLabel_1.setBounds(12, 107, 57, 15);
+		getContentPane().add(lblNewLabel_1);
+
+		JLabel lblNewLabel_2 = new JLabel("수량");
+		lblNewLabel_2.setBounds(12, 154, 57, 15);
+		getContentPane().add(lblNewLabel_2);
+
+		textField = new JTextField();
+		textField.setBounds(81, 29, 165, 29);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+
 		textField_1 = new JTextField();
-		textField_1.setBounds(81, 128, 179, 30);
+		textField_1.setBounds(81, 87, 165, 35);
 		getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 
 		textField_2 = new JTextField();
-		textField_2.setBounds(81, 189, 179, 29);
+		textField_2.setBounds(81, 143, 165, 39);
 		getContentPane().add(textField_2);
 		textField_2.setColumns(10);
 
@@ -53,7 +64,7 @@ public class BookOrder extends JFrame implements ActionListener {
 		btnNewButton_1.addActionListener(this);
 
 		setTitle("발주서등록");
-		setSize(823, 581);
+		setSize(449, 458);
 		setVisible(true);
 	}
 
@@ -63,17 +74,21 @@ public class BookOrder extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		BookOrderDAO in = new BookOrderDAO();
+		OrderDAO in = new OrderDAO();
 		if (e.getSource() == btnNewButton) {
 
-			String price = textField_1.getText();
-			int priceInt = Integer.parseInt(price);
+//			String Quantity = textField_1.getText();
+//			int QuantityInt = Integer.parseInt(Quantity);
 
-			BookOrderDAO dao = new BookOrderDAO();
-			BookOrderDTO dto = new BookOrderDTO(textField_2.getText(), priceInt);
+			OrderDAO dao = new OrderDAO();
+			OrderDTO dto = new OrderDTO(textField.getText());
+			JOptionPane.showMessageDialog(null, "발주등록되었습니다.");
 
 			dao.insert(dto);
 
+		} else if (e.getSource() == btnNewButton_1) {
+			
+			
 		}
 	}
 }
